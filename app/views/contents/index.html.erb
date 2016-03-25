@@ -1,0 +1,35 @@
+ <h1>All Contents</h1>
+
+
+
+
+<% @contents.each do |content| %> 
+<div class="row">
+  <div class="col-md-2">
+
+   <section class="chef_into center">
+   	<h4>Author name:<%=  content.author.user.name
+      %></h4> 
+   </section> 
+  </div>
+    
+  
+   
+  <div class="col-lg-8 well">  
+    <h4><%= link_to content.name,content_path(content) %></h4>
+  	<P><%= content.description %></P>
+  	<p>
+   	<span class="quiet"><small><%= time_ago_in_words(content.created_at)%></small>
+   	</span>      
+   </p>
+  </div>  
+ 
+ </div> 
+<% end %>
+
+ 
+
+
+  
+
+   

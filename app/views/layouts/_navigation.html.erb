@@ -1,0 +1,56 @@
+
+<header class="navbar navbar-fixed-top navbar-default">
+ <div class="container">
+ 	<%= link_to "Content App", root_path, class: "btn btn-lg btn-success", id: "logo" %>
+
+
+
+ <% if logged_in? %> 
+   <ul class="nav-item">
+ 	<li class="dropdown">
+ 	<%= link_to '#', class: "btn btn-default btn-danger dropdown-toggle",
+ 	'data-toggle' => "dropdown" do %>  
+ 	 
+ 	 <%= current_user.name %> <b class="caret"></b> 
+ 	 <% end %> 
+ 	 <ul class="dropdown-menu">
+ 	 	<li> <%= link_to "View Profile", user_path(current_user)%></li>
+ 	 	<li><%= link_to  "Edit Profile", edit_user_path(current_user)%></li>
+ 	 	<li><%= link_to  "Create Content", new_content_path%></li> 
+ 	 	<li class="divider"></li>
+ 	 	<li><%= link_to "Logout", logout_path %></li> 
+ 	 </ul>  
+ 	</li>
+ </ul>
+
+   
+  
+  <% else %> 
+ 	<div class="nav-item">
+ 		<%= link_to "Reader Sign In", login_path, class: "btn btn-default btn-warning"%>  
+ 	</div> 
+
+    <div class="nav-item">
+ 		<%= link_to "Author Sign In", login_path, class: "btn btn-default btn-warning"%>  
+ 	</div>
+  <% end %> 
+	
+ </div>     
+</header> 
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+

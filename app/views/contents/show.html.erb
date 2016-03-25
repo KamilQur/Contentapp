@@ -1,0 +1,31 @@
+  <p>
+  	<h1><%= @content.author.name %></h1>
+
+  </p>     
+
+
+
+  <div class="row">
+  <div class="col-md-4 pull-right center">
+   <%#= gravatar_for @content.author, size:200 %>
+   <p>
+   	<h5>Created by :<%= @content.author.name %> </h5>
+   </p>	
+  </div>
+    <div class="col-md-8">
+    <%= link_to "Edit Description",edit_content_path(@content), class: "btn btn-success pull-right"%>  
+     <h3><%= @content.name %></h3>
+     <div class="well">
+       <%= @content.description %> 
+     </div>	 
+    </div> 
+  </div>
+
+
+<h5><%= link_to "Content Listing", contents_path, class:"btn btn-warning btn-small"%></h5> 
+
+  
+
+
+ 
+ 

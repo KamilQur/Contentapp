@@ -1,8 +1,43 @@
 Rails.application.routes.draw do
 
+  
+ root 'home#home' 
 
-  get '/home', to: 'home#home' 
 
+  
+ #get '/contents', to: 'contents#index'
+
+ #get '/contents/new', to: 'contents#new', as: 'new_content'
+
+ #post 'contents', to: 'contents#create'
+
+ #get '/contents/:id/edit', to: 'contents#edit' as:'edit_content'
+
+ #patch '/contents/:id', to: 'contents#update' 
+
+ #get 'recipes/:id', to: 'contents#show' as: 'content' 
+
+ #delete '/recipes/:id', to: 'contents#destroy'
+ 
+  resources :contents 
+
+  resources :users, except: [:new] do
+    collection do
+      get "register_author"   
+      post "register"
+      get "register_reader"
+    end
+  end
+
+ 
+  get '/login', to: "logins#new"
+  post '/login', to: "logins#create"
+
+  get '/logout', to: "logins#destroy"
+
+   
+
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

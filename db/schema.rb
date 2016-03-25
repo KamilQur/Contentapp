@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20160209212959) do
   enable_extension "plpgsql"
 
   create_table "authors", force: :cascade do |t|
-    t.integer  "followers"
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -31,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160209212959) do
   end
 
   create_table "contents", force: :cascade do |t|
-    t.string   "Name"
+    t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -42,11 +41,9 @@ ActiveRecord::Schema.define(version: 20160209212959) do
     t.integer "sender_id"
     t.integer "receiver_id"
     t.text    "message"
-    t.integer "user_id"
   end
 
   create_table "readers", force: :cascade do |t|
-    t.integer  "following"
     t.string   "interest"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -55,7 +52,7 @@ ActiveRecord::Schema.define(version: 20160209212959) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "Email"
+    t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"

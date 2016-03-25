@@ -1,0 +1,71 @@
+<p>
+	<h1>Create a new content</h1>
+   <hr/>
+</p> 
+  
+
+<% if@content.errors.any? %>
+ <div class="row">
+ <div class="alert alert-danger col-md-8 col-md-offset-2">  
+   <h5>Please correct the following errors:</h5>
+   <ul>
+     <% @content.errors.full_messages.each do |msg|%>
+       <li><%= msg %></li> 
+     <% end %> 
+   </ul>
+ </div>   
+ </div>
+<% end %> 
+  
+
+
+
+<div class="row">
+<div class="well col-md-8 col-md-offset-2">
+  <%= form_for @content do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description,cols: "20", rows: "5" %>   
+    <%= f.submit 'Create Content', class: "btn btn-success" %> 
+
+    <% end %> 
+	
+</div>	
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

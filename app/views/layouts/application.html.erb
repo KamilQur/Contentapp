@@ -8,25 +8,9 @@
 </head>
 <body>
 
-<header class="navbar navbar-fixed-top navbar-default">
- <div class="container">
- 	<%= link_to "Content App", "", class: "btn btn-lg btn-success", id: "logo" %>
 
- 	<div class="nav-item">
- 		<%= link_to "Author Sign In", "", class: "btn btn-default btn-warning"%>  
- 	</div>
-
-
- 	<div class="nav-item">
- 		<%= link_to "Reader Sign In", "", class: "btn btn-default btn-warning"%>  
- 	</div>
-
-
- </div> 
- 
-</header>
-
-
+<%= render 'layouts/navigation' %> 
+<%= render 'layouts/messages'%> 
 
 <%= yield %>
 
