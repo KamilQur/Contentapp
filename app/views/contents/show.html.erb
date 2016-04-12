@@ -17,11 +17,17 @@
      <h3><%= @content.name %></h3>
      <div class="well">
        <%= @content.description %> 
+
+       <a  href="<%= @content.file.url %>"  class="btn btn-primary  pull-right" role="button" >Link To Url</a> 
+ 
      </div>	 
-    </div> 
-  </div>
+    </div>     
+  </div>  
 
-
+ 
+   
+  
+ 
 <h5><%= link_to "Content Listing", contents_path, class:"btn btn-warning btn-small"%></h5> 
 
   
