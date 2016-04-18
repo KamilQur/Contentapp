@@ -1,36 +1,69 @@
+  
   <p>
   	<h1><%= @content.author.name %></h1>
-
   </p>     
-
-
-
+ 
+ 
+       
   <div class="row">
   <div class="col-md-4 pull-right center">
+
+    <%= link_to image_tag(@content.author.user.picture.url),user_path(@content.author)%>
+
    <%#= gravatar_for @content.author, size:200 %>
+   
    <p>
    	<h5>Created by :<%= @content.author.name %> </h5>
    </p>	
+ 
+ 
+
   </div>
+
     <div class="col-md-8">
-    <%= link_to "Edit Description",edit_content_path(@content), class: "btn btn-success pull-right"%>  
+     <% if logged_in? %> 
+    <%= link_to "Edit Description",edit_content_path(@content), class: "btn btn-success pull-right"%> 
+      <% end %> 
+
      <h3><%= @content.name %></h3>
      <div class="well">
        <%= @content.description %> 
 
        <a  href="<%= @content.file.url %>"  class="btn btn-primary  pull-right" role="button" >Link To Url</a> 
  
-     </div>	 
+     </div>	  
     </div>     
   </div>  
 
  
-   
-  
- 
 <h5><%= link_to "Content Listing", contents_path, class:"btn btn-warning btn-small"%></h5> 
 
   
+<h4>Comments</h4>
+<div>
+<div id="comments">
+     <%= render :partial => @content.comments %>
+   </div>
+   
+   <!-- :message, url: messages_path -->
+  <%= form_for :comments, url: content_comments_path(@content, Comment.new) do |f| %>
+    <%= f.text_field :body %>
+    <%= f.submit "Add Comment", :class => "btn btn-primary" %>
+  <% end %>
+
+
+  </div>
+
+
+ 
+
+ 
+
+
+
+
+
+
 
 
  

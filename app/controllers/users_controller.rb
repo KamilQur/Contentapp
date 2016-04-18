@@ -1,9 +1,12 @@
  class UsersController < ApplicationController
+  before_action :set_user ,only:[:edit,:update,:show]
 	before_action :require_same_user, only: [:edit,:update] 
  
- 
+  def send_message
+  end
+
   def new
-    @user = User.new 
+    @user = User.new  
   end
 
   def register_author
@@ -34,23 +37,21 @@
 
 
   def edit 
-   @user = User.find(params[:id])
-  end
+
+  end 
 
  
    def update 
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Your profile has beeem updated successfully"
-      redirect_to :root
+      redirect_to user_path(@user)
     else   
-      render 'edit'
+      render 'edit' 
    end
    end
   
 
    def show 
-   @user = User.find(params[:id])
 
    end
  
@@ -62,22 +63,25 @@
 
   private 
   def user_params
-  	params.require(:user).permit(:email, :name, :password)
+  	params.require(:user).permit(:email, :name, :password, :picture)
   end
 
 
- 
- 
- def require_same_user
+  def set_user
+    @user = User.find(params[:id])
+  end  
+
+
+  def require_same_user
    if current_user != @user
     flash[:danger] = "You can edit your own profile"
-    redirect_to root_path 
+    redirect_to register_author_users_path 
   end
  end
  
 
 
-
+ 
 
 
 

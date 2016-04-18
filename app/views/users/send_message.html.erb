@@ -1,0 +1,10 @@
+<div id="stream">
+	<%= form_for :message, url: messages_path do |f| %>
+		<%= f.text_area :body, id: "url", placeholder: "Message", class: "message-body"%>
+		<input name="message[recipient_id]" type="hidden" value="<%= params[:id]%>">
+	
+	<div id ="stream-footer"> 
+ 		<%= f.button :submit, class: "btn btn-outline"%>
+ 	</div>
+ 	<% end %>
+ </div>

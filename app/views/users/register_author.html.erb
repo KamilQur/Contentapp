@@ -1,3 +1,4 @@
+
   <%= render 'shared/page_title',title: "Create A New Author" %>   
 
  
@@ -8,17 +9,22 @@
  
 <div class="row">
 	<div class="well col-md-8 col-md-offset-2"> 
-		<%= form_for @user, url: register_users_path do |f| %> 
+<%= form_for @user, url:register_users_path do |f| %>
+
 		<%= f.label :name %>
-		<%= f.text_field :name %>     
+		<%= f.text_field :name, :required => true %>      
 
 		<%= f.label :email %>
-		<%= f.email_field :email %>   
+		<%= f.email_field :email,  type:'email', required: true %>   
 
 		<%= f.label :password %> 
-		<%= f.password_field :password %>
+		<%= f.password_field :password, :required => true %>
 
 		<input type="hidden" name="user_type" value="author">
+
+		<span class="picture">
+			<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'%> 
+		</span>
 
 		<%= f.submit(@user.new_record? ? 'Register' : 'Edit Recipe',class:"btn btn-success") %>    
 		<% end %>   
@@ -27,6 +33,22 @@
 
 
  
+<script type="text/javascript">
+    $('#user_picture').bind('change',function(){
+	size_in_megabytes = this.files[0].size/1024/1024;
+	if(size_in_megabytes > 5 ){
+		alert("Maximum file is 5MB.Please choose a smaller file");
+	}
+    });
+</script>
+
+
+
+ 
+
+
+
+
 
 
 

@@ -1,12 +1,18 @@
 
 class ContentsController < ApplicationController
+  
+ before_action :set_content, only: [:edit,:update,:show]
+ before_action :require_user, except:[:show,:index] 
+ before_action :require_same_user, only: [:edit,:update]
+
+
 	def index 
 		@contents = Content.all
 	end
 
 
 	def show
-		@content = Content.find(params[:id])
+
 	end	
 
 
@@ -32,7 +38,6 @@ class ContentsController < ApplicationController
 
 
     def update
-        @content = Content.find(params[:id])
         if @content.update(content_params)
             flash[:success] = "Content Description has been updated succesfully"
             redirect_to content_path(@content) 
@@ -56,9 +61,9 @@ class ContentsController < ApplicationController
     end	
  
    
- 
+  
    def edit 
-     @content = Content.find(params[:id]) 
+
    end
 
 
@@ -87,4 +92,16 @@ class ContentsController < ApplicationController
     params.require(:content).permit(:name,:description, :file)
   end
 
+  def set_content 
+     @content = Content.find(params[:id]) 
+  end 
+
+  def require_same_user 
+    if current_user != @content.author.user 
+      flash[:danger] = "You can only edit your own content and create by Signing Up"
+      redirect_to contents_path 
+  end
+ end  
+
+ 
 end 

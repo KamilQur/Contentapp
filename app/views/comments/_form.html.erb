@@ -1,0 +1,20 @@
+<%= simple_form_for(@comment) do |f| %>
+
+  <%= f.error_notification %>
+
+  <div class="form_inputs">
+
+   <%= f.input :content_id %>
+   <%= f.input :body  %>
+
+   </div>
+
+
+<div class="form_actions">
+	<%= f.button :submit %> 
+</div>
+
+<% end %>
+
+
+

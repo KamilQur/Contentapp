@@ -1,22 +1,20 @@
- class Message < ActiveRecord::Base
+class Message < ActiveRecord::Base
+  belongs_to :sender, class_name: 'User'
+  belongs_to :recipient
+  # has_many :recipients
+  # has_many :users, :through => :recipients
 
-	belongs_to :sender, class_name: "User"  
-	belongs_to :receiver, class_name: "User"
- 
-	# get all send messages
+  validates :sender_id, :recipient_id,  presence: true
 
-	# find_all_by_sender_id(user_id) it will return all the send messages 
-	# 
-	# find_all_by_sender_id(user_id) it will return all the send messages 
-	# 
+  validates :body, presence: true 
 
 
+  #def user_tokens(ids)
+  	#self.user_ids = ids
+ # end	 
+
+
+end
 
 
 
-
-
-
-
-
-end 	
