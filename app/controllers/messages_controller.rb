@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
 
+
 def new
 	@message = Message.new 
 end
@@ -13,7 +14,7 @@ def create
   	flash[:success] = "Message sent"
   	redirect_to contents_path  
   else
-  	flash[:alert] = "Great Scott"
+  	flash[:alert] = "Send Again"
   	render :new
   end
 end	 

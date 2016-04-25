@@ -9,13 +9,17 @@
       </div>
 
       <div class="bottom-message">
-      <span >from </span><%= message.sender.name %>
+       <a><%=link_to  message.sender.name, user_path(message.sender) %></a>
       </div>
-      </div>
-     <% end %> 
+      </div> 
+     <% end %>      
 
+     </div>   
      </div>
-     </div>
+
+
+
+
 
 
 

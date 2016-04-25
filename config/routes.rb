@@ -15,13 +15,13 @@ Rails.application.routes.draw do
  #get 'recipes/:id', to: 'contents#show' as: 'content' 
 
  #delete '/recipes/:id', to: 'contents#destroy'
- 
-
  resources :contents 
 
  resources :contents do 
   resources :comments, only: [:create]
  end
+
+  resources :readers, only: [:update]
 
 
   resources :users, except: [:new] do
@@ -41,6 +41,9 @@ Rails.application.routes.draw do
 
   get '/logout', to: "logins#destroy"
 
+  resources :categories, only: [:show]  
+
+  resources :readers,  only:[:update]   
    
   resources :messages, only: [:create, :new, :index] 
  

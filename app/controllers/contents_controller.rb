@@ -1,19 +1,19 @@
 
 class ContentsController < ApplicationController
   
- before_action :set_content, only: [:edit,:update,:show]
+ before_action :set_content, only: [:edit,:update,:show,:destroy]
  before_action :require_user, except:[:show,:index] 
- before_action :require_same_user, only: [:edit,:update]
-
+ before_action :require_same_user, only: [:edit,:update,:destroy]
+ before_action :is_current_user_author, only: [:edit, :create, :new]
 
 	def index 
-		@contents = Content.all
+		@contents = Content.paginate(page: params[:page], per_page: 5)
 	end
+ 
+ 
+	def show  
 
-
-	def show
-
-	end	
+	end	 
 
 
     def new
@@ -67,6 +67,13 @@ class ContentsController < ApplicationController
    end
 
 
+ 
+  def destroy 
+    @content.destroy 
+    redirect_to contents_path(@content)
+
+  end   
+
 
   protected
   
@@ -88,8 +95,14 @@ class ContentsController < ApplicationController
   
   private 
 
+  def is_current_user_author
+    if current_user && current_user.is_reader?
+      redirect_to contents_path 
+    end
+  end
+
   def content_params
-    params.require(:content).permit(:name,:description, :file)
+    params.require(:content).permit(:name,:description, :file, :category_id)
   end
 
   def set_content 

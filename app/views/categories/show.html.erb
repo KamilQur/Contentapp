@@ -1,7 +1,6 @@
- <h1>All Contents</h1>
-
-
-<%= will_paginate %> 
+<div class="row" >
+	<h1><%=@category.name%></h1>	
+</div>
 
 <% @contents.each do |content| %> 
 <div class="row">
@@ -17,13 +16,10 @@
     
   <div class="col-lg-8 well">  
     <h4><%= link_to content.name,content_path(content) %></h4>
-  	<P><%= content.description %></P>
-
-    <%= link_to content.category.name,category_path(content.category) if content.category  %>  
-    
+  	<P><%= content.description %></P>    
   	<p>
    	<span class="quiet"><small><%= time_ago_in_words(content.created_at)%></small>
-   	</span>      
+   	</span>       
    </p>
   </div>  
  
@@ -32,10 +28,34 @@
  </div> 
 <% end %>
 
-<%= will_paginate %> 
- 
 
 
-  
 
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

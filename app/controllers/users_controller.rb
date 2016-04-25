@@ -56,6 +56,17 @@
    end
  
   
+  def destroy
+    @user = User.find_by_id(params[:id])
+    if @user.destroy
+      session[:user_id] = nil
+      redirect_to root_url, notice: "User deleted."
+    end
+  end
+ 
+   
+ 
+ 
 
   def index
    @users = User.all 
@@ -83,7 +94,7 @@
 
  
 
-
+ 
 
  end 
 

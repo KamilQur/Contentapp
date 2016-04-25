@@ -1,7 +1,7 @@
  class CommentsController < ApplicationController
 
   def create
-     @content = Content.find(params[:content_id]) 
+     @content = Content.find(params[:content_id])   
      @comment = @content.comments.new(comments_params)
      @comment.user_id = current_user.id
 
@@ -14,6 +14,10 @@
     end 	
  end  	
  
+
+
+ 
+ 
  private 
 
     def comments_params
@@ -22,7 +26,7 @@
 
 end
 
-
+ 
 
 
 

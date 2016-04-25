@@ -8,36 +8,50 @@
 			<h5>Name: <%= @user.name %></h5>	
     </div>
 
+
    
  <% if logged_in? %> 
     <%= link_to "Send Message", send_message_user_path(@user), class: "btn btn-success pull-right"%> 
       <% end %> 
 
 
- <div class="indexcontent"> 
- <% @user.author.contents.each do |content| %>  
-<div class="row">
-<div class="col-lg-6 well col-lg-offset-3"> 
-  	<h4><%= link_to content.name,content_path(content) %></h4>
-  	<p><%= link_to content.description %></p> 
-  <p>
-
-  	<span class="quiet"><small> created: <%= time_ago_in_words(content.created_at)%> ago, </small></span>
-
-  	<span class="quiet"><small> created: <%= time_ago_in_words(content.created_at)%> ago, </small></span>   
-  </p>
-</div> 
-</div> 
 
 
+<%if current_user.is_author? %>
+   <div class="indexcontent"> 
+    <% @user.author.contents.each do |content| %>  
+      <div class="row">
+        <div class="col-lg-6 well col-lg-offset-3"> 
+        	<h4><%= link_to content.name,content_path(content) %></h4>
+        	<p><%= link_to content.description %></p> 
+          <p>
+          	<span class="quiet">
+              <small> 
+                created: <%= time_ago_in_words(content.created_at)%> ago, 
+              </small>
+            </span>
 
+          	<span class="quiet">
+              <small> 
+                created: <%= time_ago_in_words(content.created_at)%> ago, 
+              </small>
+            </span>
+          </p>
+        </div> 
+      </div> 
+    <% end %>
+  </div>
 <% end %>
- </div>
 
+
+
+<% if current_user.is_reader? %>
+  <%= link_to current_user.reader.show_interest.name, category_path(current_user.reader.show_interest) if current_user.reader.show_interest %> 
+<% end %> 
    
    
  
-
+ 
 
 
 

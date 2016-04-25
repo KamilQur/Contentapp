@@ -6,7 +6,7 @@ class Message < ActiveRecord::Base
 
   validates :sender_id, :recipient_id,  presence: true
 
-  validates :body, presence: true 
+  validates :body, presence: true    
 
 
   #def user_tokens(ids)

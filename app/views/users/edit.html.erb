@@ -5,8 +5,14 @@
  
 
 
-   
+<%if current_user.is_reader? %>
+	<%= form_for current_user.reader do |f| %>
+		
+    <%= f.select :interest, Category.all.collect {|c| [ c.name, c.id ] }, :prompt => 'Select One' %>
+    <%= f.submit %>
+
+  
+	<% end %> 
 
 
-
-
+<% end %>

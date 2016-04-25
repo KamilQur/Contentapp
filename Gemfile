@@ -36,7 +36,10 @@ gem 'nested_form_fields'
 
 gem 'simple_form' 
 
- 
+gem 'will_paginate', '3.0.7'
+
+gem 'bootstrap-will_paginate','0.0.10'     
+
 gem 'cloudinary' 
  
 gem 'sprockets-rails', :require => 'sprockets/railtie'
