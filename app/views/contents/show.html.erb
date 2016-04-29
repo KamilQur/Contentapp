@@ -42,6 +42,7 @@
 <h5><%= link_to "Content Listing", contents_path, class:"btn btn-warning btn-small"%></h5> 
 
   
+ <% if logged_in? %> 
 
 <h4>Comments</h4>
 <div>
@@ -53,11 +54,12 @@
   <%= form_for :comments, url: content_comments_path(@content, Comment.new) do |f| %>
     <%= f.text_field :body %>
     <%= f.submit "Add Comment", :class => "btn btn-primary" %>
+
   <% end %>
-
-
+  
   </div>
 
+  <% end %> 
 
  
 

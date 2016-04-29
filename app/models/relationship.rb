@@ -6,8 +6,8 @@ class Relationship < ActiveRecord::Base
 # followed are those people who you followed 
  belongs_to :followed, class_name: "User"
 
- validates, :follower_id, presence: true
- validates, :followed_id, presence: true
+ # validates, :follower_id, presence: true
+ # validates, :followed_id, presence: true
 
 
 

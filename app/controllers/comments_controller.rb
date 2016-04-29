@@ -1,5 +1,6 @@
  class CommentsController < ApplicationController
 
+
   def create
      @content = Content.find(params[:content_id])   
      @comment = @content.comments.new(comments_params)
@@ -15,7 +16,9 @@
  end  	
  
 
+    
 
+ 
  
  
  private 

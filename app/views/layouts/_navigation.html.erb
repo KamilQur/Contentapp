@@ -17,24 +17,24 @@
  	 	<li> <%= link_to "View Profile", user_path(current_user)%></li>
  	 	<li><%= link_to  "Edit Profile", edit_user_path(current_user)%></li>
 
+     <% if current_user.is_reader? %>
+        <li> <%= link_to "Recommended Content", category_path(current_user.reader.show_interest) if current_user.reader.show_interest %> </li>
+     <% end %> 
 
 
- 	 	<% if(current_user.is_author?) %> 
+ 	 	<% if(current_user.is_author?) %>   
  	 		<li><%= link_to  "Create Content", new_content_path%></li> 
  	 	<% end %>
-
-
-
- 	      <li> <%= link_to "Delete Account", current_user,       
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %> </li>  
-        
 
  	 	<li><%= link_to  "Inbox", messages_path%></li> 
 
 
  	 	<li class="divider"></li>
- 	 	<li><%= link_to "Logout", logout_path %></li> 
+ 	 	<li> <%= link_to "Delete Account", current_user,       
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %> </li>  
+
+     <li><%= link_to "Logout", logout_path %></li>           
  	 </ul>  
  	</li> 
  </ul>

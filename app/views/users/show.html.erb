@@ -8,7 +8,20 @@
 			<h5>Name: <%= @user.name %></h5>	
     </div>
 
+    
 
+
+<%if @user.is_author?  %>
+
+  <div class="col-sm-6" style="font-size:80%; opacity:0.7;">Followers<br>
+   <h6><%=@user.followers.count %></h6>
+
+  <%= render '/components/follow_button', :user => @user%>   
+<% end %>
+    
+  </div>
+  
+ 
    
  <% if logged_in? %> 
     <%= link_to "Send Message", send_message_user_path(@user), class: "btn btn-success pull-right"%> 
@@ -17,10 +30,10 @@
 
 
 
-<%if current_user.is_author? %>
+<%if @user.is_author?  %>
    <div class="indexcontent"> 
     <% @user.author.contents.each do |content| %>  
-      <div class="row">
+      <div class="row"> 
         <div class="col-lg-6 well col-lg-offset-3"> 
         	<h4><%= link_to content.name,content_path(content) %></h4>
         	<p><%= link_to content.description %></p> 

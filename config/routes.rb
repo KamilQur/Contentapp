@@ -15,13 +15,15 @@ Rails.application.routes.draw do
  #get 'recipes/:id', to: 'contents#show' as: 'content' 
 
  #delete '/recipes/:id', to: 'contents#destroy'
+
  resources :contents 
 
  resources :contents do 
-  resources :comments, only: [:create]
+  resources :comments, only: [:create]  
  end
 
   resources :readers, only: [:update]
+  resources :relationships, only: [:create, :destroy]
 
 
   resources :users, except: [:new] do
@@ -35,6 +37,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users do 
+    member do 
+      get :following, :followers
+  end
+end 
  
   get '/login', to: "logins#new"
   post '/login', to: "logins#create"
