@@ -9,13 +9,16 @@
     @user = User.new  
   end
 
+
   def register_author
   	@user = User.new
   end
 
+
   def register_reader
  	@user = User.new
   end
+ 
  
    def register  
   	@user = User.new(user_params)

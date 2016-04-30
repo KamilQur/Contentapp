@@ -25,9 +25,9 @@ validates :email, presence: true, length: {maximum:100} ,
 										uniqueness: {case_sensitive: false},
 										format: {with: VALID_EMAIL_REGEX}
 
-validate :picture_size 
+ validate :picture_size 
 
-mount_uploader :picture, PictureUploader 
+ mount_uploader :picture, PictureUploader   
 
 
 has_secure_password  
@@ -57,7 +57,7 @@ end
    following.include?(other)
  end	
  
-
+ 
 
 private
  def picture_size
@@ -66,6 +66,6 @@ private
   end
  end
 
-
+ 
 
 end 	

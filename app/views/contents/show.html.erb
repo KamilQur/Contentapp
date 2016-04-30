@@ -31,7 +31,11 @@
 
      <h3><%= @content.name %></h3>
      <div class="well">
-       <%= @content.description %> 
+       <%= @content.description %>
+
+       <embed src="<%= @content.file.url %>" width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+
+        
        <a  href="<%= @content.file.url %>"  class="btn btn-primary  pull-right" role="button" >Link To Url</a> 
      </div>
 

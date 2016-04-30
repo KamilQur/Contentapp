@@ -6,11 +6,22 @@ class ContentsController < ApplicationController
  before_action :require_same_user, only: [:edit,:update,:destroy]
  before_action :is_current_user_author, only: [:edit, :create, :new]
 
+
+
 	def index 
-		@contents = Content.paginate(page: params[:page], per_page: 5)
+    if current_user.is_author?
+      @contents = Content.all.paginate(page: params[:page], per_page: 5)    
+   else
+		  @contents = Content.get_feeds(current_user.id).paginate(page: params[:page], per_page: 5) 
+       if @contents.length==0
+        @contents = Content.all.paginate(page: params[:page], per_page: 5) 
+      end 
+    end 
 	end
  
- 
+  
+   
+
 	def show  
 
 	end	 
