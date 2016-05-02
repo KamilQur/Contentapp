@@ -19,6 +19,11 @@
 
 		<input type="hidden" name="user_type" value="reader">
 
+        <span class="picture"> 
+			<%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png'%> 
+		</span>   
+
+
 		<%= f.submit(@user.new_record? ? 'Register' : 'Edit Recipe',class:"btn btn-success") %>    
 		<% end %>   
 	</div>  

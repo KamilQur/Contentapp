@@ -16,8 +16,8 @@ class ContentsController < ApplicationController
        if @contents.length==0
         @contents = Content.all.paginate(page: params[:page], per_page: 5) 
       end 
-    end 
-	end
+    end  
+	end  
  
   
    

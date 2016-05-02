@@ -3,12 +3,12 @@
 
 	<div class="col-md-4 pull-left center">  
 		<div class="show_profile">
-      <%= image_tag(@user.picture.url, class:"gravatar") if @user.picture? %> 
+      <%= image_tag(@user.image.url, class:"gravatar") if @user.image? %> 
       </div>
 			<h5>Name: <%= @user.name %></h5>	
     </div>
 
-    
+     
 
 
 <%if @user.is_author?  %>
@@ -16,7 +16,7 @@
   <div class="col-sm-6" style="font-size:80%; opacity:0.7;">Followers<br>
    <h6><%=@user.followers.count %></h6>
 
-  <%= render '/components/follow_button', :user => @user%>   
+  <%= render '/followings/follow_button', :user => @user%>   
 <% end %>
     
   </div>
@@ -26,7 +26,7 @@
  <div class="col-sm-6" style="font-size:80%; opacity:0.7;">Following<br>
    <h6><%=@user.following.count %></h6>
  </div>
- <% end %>  
+ <% end %>   
 
    
  <% if logged_in? %> 

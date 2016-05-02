@@ -8,12 +8,17 @@
   <div class="col-md-2">
 
    <section class="chef_into center">
-   	<h4>Author name:<%=  content.author.user.name
-        %></h4> 
+   	
+
+    <div class="show_profile">
+      <%= link_to ( image_tag(content.author.user.image.url, class:"gravatar", style: "; height:120px") ), user_path(content.author) if content.author.user.image %>     
+      </div> 
+      <h4>Author name:<%=  content.author.user.name      
+        %></h4>     
    </section> 
-  </div>
+  </div> 
     
-  
+    
     
   <div class="col-lg-8 well">  
     <h4><%= link_to content.name,content_path(content) %></h4>
