@@ -1,10 +1,5 @@
-<%= render 'shared/page_title',title: "Edit Your Profile " %>   
-
-
+<%= render 'shared/page_title',title: "Update Profile " %>   
 <%= render 'form' %> 
- 
-
-
 <%if current_user.is_reader? %>
 	<%= form_for current_user.reader do |f| %>
 		
