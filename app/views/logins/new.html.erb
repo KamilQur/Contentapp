@@ -1,31 +1,12 @@
 <div class="row">
-<div class="well col-md-6 col-md-offset-3">
-<%= render 'shared/page_title', title: "Log in" %>
+	<div class="well col-md-6 col-md-offset-3">
+	<%= render 'shared/page_title', title: "Log in" %>
+	<%= form_tag '/login', :class => "form-signin" do %>
+		<%= text_field_tag :email,"", :class => "form-control", :placeholder => "Eamil Addres" %>
+		<%= password_field_tag :password, "", :class => "form-control", :placeholder =>"Password" %>
+		<br/>  
+	 	<%= submit_tag 'login',class: 'btn btn-lg btn-primary btn-block' %> 
+	<% end %>
 
-<%= form_tag '/login', :class => "form-signin" do %>
-	<%= text_field_tag :email,"", :class => "form-control", :placeholder => "Eamil Addres" %>
-	<%= password_field_tag :password, "", :class => "form-control", :placeholder =>"Password" %>
-	<br/>  
- 	<%= submit_tag 'login',class: 'btn btn-lg btn-primary btn-block' %> 
-<% end %>
-
-</div>
+	</div>
 </div> 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
