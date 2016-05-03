@@ -5,32 +5,32 @@
 
 <% @contents.each do |content| %> 
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-1">
 
    <section class="chef_into center">
    	
 
     <div class="show_profile">
-      <%= link_to ( image_tag(content.author.user.image.url, class:"gravatar", style: "; height:120px") ), user_path(content.author) if content.author.user.image %>     
+      <%= link_to ( image_tag(content.author.user.image.url, class:"gravatar", style: "; height:60px") ), user_path(content.author) if content.author.user.image %>     
       </div> 
-      <h4>Author name:<%=  content.author.user.name      
-        %></h4>     
-   </section> 
-  </div> 
-    
-    
-    
-  <div class="col-lg-8 well">  
+      <p> 
+        <%= link_to content.author.user.name, user_path(content.author) %> 
+      </p>      
+    </div>
+
+    <div class="col-lg-8 well">  
     <h4><%= link_to content.name,content_path(content) %></h4>
-  	<P><%= content.description %></P>
+    <P><%= content.description %></P>
 
     <%= link_to content.category.name,category_path(content.category) if content.category  %>  
     
-  	<p>
-   	<span class="quiet"><small><%= time_ago_in_words(content.created_at)%></small>
-   	</span>      
+    <p>
+    <span class="quiet"><small><%= time_ago_in_words(content.created_at)%></small>
+    </span>      
    </p>
-  </div>  
+  </div>
+
+  </section>  
  
 
 
