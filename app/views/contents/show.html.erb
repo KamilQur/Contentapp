@@ -33,7 +33,7 @@
      </div>  
 
     <div class="well" style="width:885px" >
-      <embed src="<%= @content.file.url %>" width="850" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">   
+      <embed src="<%= @content.file.url(secure:true) %>" width="850" height="500" alt="pdf" pluginspage="https://www.adobe.com/products/acrobat/readstep2.html">   
     </div>
 
     </div>
