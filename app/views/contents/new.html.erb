@@ -22,24 +22,44 @@
 
 <div class="row">
 <div class="well col-md-8 col-md-offset-2">
-  <%= form_for @content do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <%= form_for @content, :class => "form-horizontal" do |f| %>
 
-    <%= f.label :description %>
-    <%= f.text_area :description,cols: "20", rows: "5" %> 
-
-    <%= f.select :category_id, Category.all.collect {|c| [ c.name, c.id ] }, :prompt => 'Select One' %>
-  
-    
-    <div class="form_line">
-      <%= f.label :file, "file:" %>
-      <div class="form_controls">
-        <%= f.file_field :file %>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Name</label>
+      <div class="col-lg-10">
+        <%= f.text_field :name, :class => "form-control", :placeholder => "Name", :id => "Name" %>
       </div>
     </div>
 
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Description</label>
+      <div class="col-lg-10">
+        <%= f.text_area :description,cols: "20", rows: "5", :class => "form-control", :placeholder => "description", :id => "description" %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Category</label>
+      <div class="col-lg-10">
+        <%= f.select :category_id, Category.all.collect {|c| [ c.name, c.id ] }, :prompt => 'Select One', :class => "form-control" %>
+      </div>
+    </div>
+
+
+    <br/>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"></label>
+      <div class="col-lg-10">
+        <%= f.file_field :file%>
+      </div>
+    </div>
+
+    <br/>
+
     <%= f.submit 'Create Content', class: "btn btn-success" %> 
+
 
     <% end %> 
 	
