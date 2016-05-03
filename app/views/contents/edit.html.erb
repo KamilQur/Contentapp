@@ -1,5 +1,5 @@
 <p>
-	<h1>Edit The Content Description</h1>
+	<h1>Edit content's description</h1>
    <hr/>
 </p> 
   
@@ -24,14 +24,31 @@
 
 <div class="row">
 <div class="well col-md-8 col-md-offset-2">
-  <%= form_for @content do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <%= form_for @content, :class => "form-horizontal" do |f| %>
 
-    <%= f.label :description %>
-    <%= f.text_area :description,cols: "20", rows: "5" %>   
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Name</label>
+      <div class="col-lg-10">
+        <%= f.text_field :name, :class => "form-control", :placeholder => "Name", :id => "Name" %>
+      </div>
+    </div>
 
-    <%= f.submit 'Edit Description', class: "btn btn-success" %> 
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Description</label>
+      <div class="col-lg-10">
+        <%= f.text_area :description,cols: "20", rows: "5", :class => "form-control", :placeholder => "description", :id => "description" %>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label"></label>
+      <div class="col-lg-10">    
+        <br/>
+    
+        <%= f.submit 'Update description', class: "btn btn-success" %> 
+      </div>
+    </div>
 
     <% end %> 
 	
