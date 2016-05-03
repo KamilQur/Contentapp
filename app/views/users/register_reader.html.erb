@@ -1,4 +1,4 @@
-  <%= render 'shared/page_title',title: "Create A New Reader" %>   
+  <%= render 'shared/page_title',title: "Register as reader" %>   
 
 
   <%= render 'shared/errors',obj:@user %>
@@ -8,23 +8,56 @@
 <div class="row">
 	<div class="well col-md-8 col-md-offset-2"> 
 		<%= form_for @user, url: register_users_path do |f| %> 
-		<%= f.label :name %>
-		<%= f.text_field :name %>     
 
-		<%= f.label :email %>
-		<%= f.email_field :email %>   
 
-		<%= f.label :password %> 
-		<%= f.password_field :password %>
+		<fieldset>
+
+			<div class="form-group">
+		      <label for="inputEmail" class="col-lg-2 control-label">Name</label>
+		      <div class="col-lg-10">
+				<%= f.text_field :name, :class => "form-control", :placeholder => "Name", :id => "Name" %>
+		      </div>
+		    </div>
+
+		    <div class="form-group">
+		      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+		      <div class="col-lg-10">
+				<%= f.text_field :email, :class => "form-control", :placeholder => "Email", :id => "Email" %>
+		      </div>
+		    </div>
+
+		    
+		    <div class="form-group">
+		      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+		      <div class="col-lg-10">
+		      	<%= f.password_field :password, :class => "form-control", :id => "inputPassword", :placeholder => "Password" %>
+		      </div>
+		    </div>
+
+
+		    <div class="form-group">
+		      <label for="inputPassword" class="col-lg-2 control-label"></label>
+		      <div class="col-lg-10">
+		      	<%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png'%>
+		      </div>
+		    </div>
+
+
+		    <div class="form-group">
+		    	<div class="col-lg-10 col-lg-offset-2">
+		    		<br>
+					<%= f.submit(@user.new_record? ? 'Register' : 'Update',class:"btn btn-success") %>  
+	            </div>
+	        </div>
+
+	  	</fieldset>
+
+
+
+
 
 		<input type="hidden" name="user_type" value="reader">
-
-        <span class="picture"> 
-			<%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png'%> 
-		</span>   
-
-
-		<%= f.submit(@user.new_record? ? 'Register' : 'Edit Recipe',class:"btn btn-success") %>    
+    
 		<% end %>   
 	</div>  
 </div> 
