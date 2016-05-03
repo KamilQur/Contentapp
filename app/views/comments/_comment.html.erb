@@ -1,17 +1,16 @@
  
  
-<%= div_for (comment) do %>
+<%= div_for (comment), :class => "well" do %>
 
-	<p>
-	   <strong> Posted <%#= time_ago_in_words(comment.created_at) %> ago</strong> </br>
-	</p>
-
-	<p> <%= comment.body%> </p>
+	
     <div class="show_profile">
       <%= link_to ( image_tag(comment.user.image.url, class:"gravatar", style: "; height:30px") ), user_path(comment.user) if comment.user.image %>     
-      </div>
-	<p> <strong> <%= comment.user.name%> </strong> </p>     
+      	
+	<p> <strong> <%= comment.user.name%> </strong> </p>
 
+      </div>     
+
+	<p> <%= comment.body%> </p>
 <% end %>  
 
 

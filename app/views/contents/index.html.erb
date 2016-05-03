@@ -11,7 +11,7 @@
    	
 
     <div class="show_profile">
-      <%= link_to ( image_tag(content.author.user.image.url, class:"gravatar", style: "; height:60px") ), user_path(content.author) if content.author.user.image %>     
+      <%= link_to ( image_tag(content.author.user.image.url, class:"gravatar", style: "height:60px;") ), user_path(content.author) if content.author.user.image %>     
       </div> 
       <p> 
         <%= link_to content.author.user.name, user_path(content.author) %> 
